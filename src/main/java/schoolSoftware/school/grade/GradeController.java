@@ -38,8 +38,8 @@ public class GradeController {
     @PutMapping("/grade/{id}")
     GradeModel replaceGrade(@RequestBody GradeModel newGrade, @PathVariable Integer id){
         return gradeRepository.findById(id).map(grade ->{
-            grade.setLevel(newGrade.getLevel());
-            grade.setName(newGrade.getName());
+            grade.setGname(newGrade.getGname());
+            grade.setGlevel(newGrade.getGlevel());
             return gradeRepository.save(grade);
         }).orElseThrow(() -> new GradeNotFoundException(id));
     }

@@ -13,7 +13,7 @@ public class TeacherController {
     private TeacherRepository teacherRepository;
 
     @PostMapping("/teacher")
-    public TeacherModel addTeacher(TeacherModel teacher) {
+    public TeacherModel addTeacher(@RequestBody TeacherModel teacher) {
         return teacherRepository.save(teacher);
     }
 
@@ -22,12 +22,12 @@ public class TeacherController {
         return teacherRepository.findAll();
     }
     @GetMapping("/teacher/{id}")
-    public TeacherModel getTeacher(Integer id) {
+    public TeacherModel getTeacher(@PathVariable Integer id) {
         return teacherRepository.findById(id).orElseThrow(()->new TeacherNotFoundException(id));
     }
 
     @DeleteMapping("/teacher/{id}")
-    public String deleteTeacher(Integer id) {
+    public String deleteTeacher(@PathVariable Integer id) {
         if(!teacherRepository.existsById(id)){
             throw new TeacherNotFoundException(id);
         }
@@ -36,7 +36,7 @@ public class TeacherController {
     }
 
     @PutMapping("/teacher/{id}")
-    public TeacherModel replaceTeacher(TeacherModel newTeacher, Integer id) {
+    public TeacherModel replaceTeacher(@RequestBody TeacherModel newTeacher, Integer id) {
         return teacherRepository.findById(id).map(teacher ->{
             teacher.setFname(newTeacher.getFname());
             teacher.setLname(newTeacher.getLname());

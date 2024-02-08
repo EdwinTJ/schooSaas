@@ -1,18 +1,16 @@
 package schoolSoftware.school.grade;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "grade")
 public class GradeModel {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    private String name;
-    private String level;
+    private String gname;
+    private String glevel;
 
     public Integer getId() {
         return id;
@@ -22,19 +20,19 @@ public class GradeModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getGname() {
+        return gname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGname(String gname) {
+        this.gname = gname;
     }
 
-    public String getLevel() {
-        return level;
+    public String getGlevel() {
+        return glevel;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setGlevel(String glevel) {
+        this.glevel = glevel;
     }
 }
