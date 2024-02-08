@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class ParentModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
     private String fname;
     private String lname;
